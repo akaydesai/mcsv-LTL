@@ -1,0 +1,318 @@
+Created by PLY version 3.9 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> label
+Rule 1     label -> LNAME COLON formula
+Rule 2     formula -> PROP
+Rule 3     formula -> LITERAL
+Rule 4     formula -> NOT formula
+Rule 5     formula -> LPAR formula OR formula RPAR
+Rule 6     formula -> LPAR formula AND formula RPAR
+Rule 7     formula -> LPAR formula XOR formula RPAR
+Rule 8     formula -> LPAR formula IFF formula RPAR
+
+Terminals, with rules where they appear
+
+AND                  : 6
+COLON                : 1
+IFF                  : 8
+LITERAL              : 3
+LNAME                : 1
+LPAR                 : 5 6 7 8
+NOT                  : 4
+OR                   : 5
+PROP                 : 2
+RPAR                 : 5 6 7 8
+XOR                  : 7
+error                : 
+
+Nonterminals, with rules where they appear
+
+formula              : 1 4 5 5 6 6 7 7 8 8
+label                : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . label
+    (1) label -> . LNAME COLON formula
+
+    LNAME           shift and go to state 1
+
+    label                          shift and go to state 2
+
+state 1
+
+    (1) label -> LNAME . COLON formula
+
+    COLON           shift and go to state 3
+
+
+state 2
+
+    (0) S' -> label .
+
+
+
+state 3
+
+    (1) label -> LNAME COLON . formula
+    (2) formula -> . PROP
+    (3) formula -> . LITERAL
+    (4) formula -> . NOT formula
+    (5) formula -> . LPAR formula OR formula RPAR
+    (6) formula -> . LPAR formula AND formula RPAR
+    (7) formula -> . LPAR formula XOR formula RPAR
+    (8) formula -> . LPAR formula IFF formula RPAR
+
+    PROP            shift and go to state 5
+    LITERAL         shift and go to state 6
+    NOT             shift and go to state 7
+    LPAR            shift and go to state 4
+
+    formula                        shift and go to state 8
+
+state 4
+
+    (5) formula -> LPAR . formula OR formula RPAR
+    (6) formula -> LPAR . formula AND formula RPAR
+    (7) formula -> LPAR . formula XOR formula RPAR
+    (8) formula -> LPAR . formula IFF formula RPAR
+    (2) formula -> . PROP
+    (3) formula -> . LITERAL
+    (4) formula -> . NOT formula
+    (5) formula -> . LPAR formula OR formula RPAR
+    (6) formula -> . LPAR formula AND formula RPAR
+    (7) formula -> . LPAR formula XOR formula RPAR
+    (8) formula -> . LPAR formula IFF formula RPAR
+
+    PROP            shift and go to state 5
+    LITERAL         shift and go to state 6
+    NOT             shift and go to state 7
+    LPAR            shift and go to state 4
+
+    formula                        shift and go to state 9
+
+state 5
+
+    (2) formula -> PROP .
+
+    $end            reduce using rule 2 (formula -> PROP .)
+    RPAR            reduce using rule 2 (formula -> PROP .)
+    OR              reduce using rule 2 (formula -> PROP .)
+    AND             reduce using rule 2 (formula -> PROP .)
+    XOR             reduce using rule 2 (formula -> PROP .)
+    IFF             reduce using rule 2 (formula -> PROP .)
+
+
+state 6
+
+    (3) formula -> LITERAL .
+
+    $end            reduce using rule 3 (formula -> LITERAL .)
+    RPAR            reduce using rule 3 (formula -> LITERAL .)
+    OR              reduce using rule 3 (formula -> LITERAL .)
+    AND             reduce using rule 3 (formula -> LITERAL .)
+    XOR             reduce using rule 3 (formula -> LITERAL .)
+    IFF             reduce using rule 3 (formula -> LITERAL .)
+
+
+state 7
+
+    (4) formula -> NOT . formula
+    (2) formula -> . PROP
+    (3) formula -> . LITERAL
+    (4) formula -> . NOT formula
+    (5) formula -> . LPAR formula OR formula RPAR
+    (6) formula -> . LPAR formula AND formula RPAR
+    (7) formula -> . LPAR formula XOR formula RPAR
+    (8) formula -> . LPAR formula IFF formula RPAR
+
+    PROP            shift and go to state 5
+    LITERAL         shift and go to state 6
+    NOT             shift and go to state 7
+    LPAR            shift and go to state 4
+
+    formula                        shift and go to state 10
+
+state 8
+
+    (1) label -> LNAME COLON formula .
+
+    $end            reduce using rule 1 (label -> LNAME COLON formula .)
+
+
+state 9
+
+    (5) formula -> LPAR formula . OR formula RPAR
+    (6) formula -> LPAR formula . AND formula RPAR
+    (7) formula -> LPAR formula . XOR formula RPAR
+    (8) formula -> LPAR formula . IFF formula RPAR
+
+    OR              shift and go to state 14
+    AND             shift and go to state 11
+    XOR             shift and go to state 12
+    IFF             shift and go to state 13
+
+
+state 10
+
+    (4) formula -> NOT formula .
+
+    $end            reduce using rule 4 (formula -> NOT formula .)
+    RPAR            reduce using rule 4 (formula -> NOT formula .)
+    OR              reduce using rule 4 (formula -> NOT formula .)
+    AND             reduce using rule 4 (formula -> NOT formula .)
+    XOR             reduce using rule 4 (formula -> NOT formula .)
+    IFF             reduce using rule 4 (formula -> NOT formula .)
+
+
+state 11
+
+    (6) formula -> LPAR formula AND . formula RPAR
+    (2) formula -> . PROP
+    (3) formula -> . LITERAL
+    (4) formula -> . NOT formula
+    (5) formula -> . LPAR formula OR formula RPAR
+    (6) formula -> . LPAR formula AND formula RPAR
+    (7) formula -> . LPAR formula XOR formula RPAR
+    (8) formula -> . LPAR formula IFF formula RPAR
+
+    PROP            shift and go to state 5
+    LITERAL         shift and go to state 6
+    NOT             shift and go to state 7
+    LPAR            shift and go to state 4
+
+    formula                        shift and go to state 15
+
+state 12
+
+    (7) formula -> LPAR formula XOR . formula RPAR
+    (2) formula -> . PROP
+    (3) formula -> . LITERAL
+    (4) formula -> . NOT formula
+    (5) formula -> . LPAR formula OR formula RPAR
+    (6) formula -> . LPAR formula AND formula RPAR
+    (7) formula -> . LPAR formula XOR formula RPAR
+    (8) formula -> . LPAR formula IFF formula RPAR
+
+    PROP            shift and go to state 5
+    LITERAL         shift and go to state 6
+    NOT             shift and go to state 7
+    LPAR            shift and go to state 4
+
+    formula                        shift and go to state 16
+
+state 13
+
+    (8) formula -> LPAR formula IFF . formula RPAR
+    (2) formula -> . PROP
+    (3) formula -> . LITERAL
+    (4) formula -> . NOT formula
+    (5) formula -> . LPAR formula OR formula RPAR
+    (6) formula -> . LPAR formula AND formula RPAR
+    (7) formula -> . LPAR formula XOR formula RPAR
+    (8) formula -> . LPAR formula IFF formula RPAR
+
+    PROP            shift and go to state 5
+    LITERAL         shift and go to state 6
+    NOT             shift and go to state 7
+    LPAR            shift and go to state 4
+
+    formula                        shift and go to state 17
+
+state 14
+
+    (5) formula -> LPAR formula OR . formula RPAR
+    (2) formula -> . PROP
+    (3) formula -> . LITERAL
+    (4) formula -> . NOT formula
+    (5) formula -> . LPAR formula OR formula RPAR
+    (6) formula -> . LPAR formula AND formula RPAR
+    (7) formula -> . LPAR formula XOR formula RPAR
+    (8) formula -> . LPAR formula IFF formula RPAR
+
+    PROP            shift and go to state 5
+    LITERAL         shift and go to state 6
+    NOT             shift and go to state 7
+    LPAR            shift and go to state 4
+
+    formula                        shift and go to state 18
+
+state 15
+
+    (6) formula -> LPAR formula AND formula . RPAR
+
+    RPAR            shift and go to state 19
+
+
+state 16
+
+    (7) formula -> LPAR formula XOR formula . RPAR
+
+    RPAR            shift and go to state 20
+
+
+state 17
+
+    (8) formula -> LPAR formula IFF formula . RPAR
+
+    RPAR            shift and go to state 21
+
+
+state 18
+
+    (5) formula -> LPAR formula OR formula . RPAR
+
+    RPAR            shift and go to state 22
+
+
+state 19
+
+    (6) formula -> LPAR formula AND formula RPAR .
+
+    $end            reduce using rule 6 (formula -> LPAR formula AND formula RPAR .)
+    RPAR            reduce using rule 6 (formula -> LPAR formula AND formula RPAR .)
+    OR              reduce using rule 6 (formula -> LPAR formula AND formula RPAR .)
+    AND             reduce using rule 6 (formula -> LPAR formula AND formula RPAR .)
+    XOR             reduce using rule 6 (formula -> LPAR formula AND formula RPAR .)
+    IFF             reduce using rule 6 (formula -> LPAR formula AND formula RPAR .)
+
+
+state 20
+
+    (7) formula -> LPAR formula XOR formula RPAR .
+
+    $end            reduce using rule 7 (formula -> LPAR formula XOR formula RPAR .)
+    RPAR            reduce using rule 7 (formula -> LPAR formula XOR formula RPAR .)
+    OR              reduce using rule 7 (formula -> LPAR formula XOR formula RPAR .)
+    AND             reduce using rule 7 (formula -> LPAR formula XOR formula RPAR .)
+    XOR             reduce using rule 7 (formula -> LPAR formula XOR formula RPAR .)
+    IFF             reduce using rule 7 (formula -> LPAR formula XOR formula RPAR .)
+
+
+state 21
+
+    (8) formula -> LPAR formula IFF formula RPAR .
+
+    $end            reduce using rule 8 (formula -> LPAR formula IFF formula RPAR .)
+    RPAR            reduce using rule 8 (formula -> LPAR formula IFF formula RPAR .)
+    OR              reduce using rule 8 (formula -> LPAR formula IFF formula RPAR .)
+    AND             reduce using rule 8 (formula -> LPAR formula IFF formula RPAR .)
+    XOR             reduce using rule 8 (formula -> LPAR formula IFF formula RPAR .)
+    IFF             reduce using rule 8 (formula -> LPAR formula IFF formula RPAR .)
+
+
+state 22
+
+    (5) formula -> LPAR formula OR formula RPAR .
+
+    $end            reduce using rule 5 (formula -> LPAR formula OR formula RPAR .)
+    RPAR            reduce using rule 5 (formula -> LPAR formula OR formula RPAR .)
+    OR              reduce using rule 5 (formula -> LPAR formula OR formula RPAR .)
+    AND             reduce using rule 5 (formula -> LPAR formula OR formula RPAR .)
+    XOR             reduce using rule 5 (formula -> LPAR formula OR formula RPAR .)
+    IFF             reduce using rule 5 (formula -> LPAR formula OR formula RPAR .)
+

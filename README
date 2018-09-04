@@ -1,0 +1,27 @@
+Open input.py to provide input. 
+Then run main.py
+
+input.py includes the following example transition system as input.
+
+init state is 00
+Transitions:
+00 -> 10
+10 -> 11
+10-> 01
+01 -> 00
+11 -> 00
+
+As formula: ((((!x1.!x0).(x1'.!x0'))+((!x1.x0).(!x1'.!x0')))+(((x1.x0).(!x1'.!x0'))+((x1.!x0).((x1'.x0')+(!x1'.x0')))))
+
+Simple testcases for the above transition system, which is already included in input.py are given below:
+
+( _P_ U _Q_) is valid.
+X x0 is not valid.
+( _P_ U _R_) is not valid.
+F _R_ is not valid
+F _Q_ is valid.
+G _S_ is valid.
+
+_P_, _Q_ etc are labelling predicates, which have been defined in input.py. You can replace those with your own.
+
+Read input.py for more details.
